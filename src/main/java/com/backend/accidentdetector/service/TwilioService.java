@@ -11,10 +11,10 @@ import java.net.URI;
 @Service
 public class TwilioService {
 
-    @Value("${TWILIO_FROM_NUMBER}")
+    @Value("${twilio.fromNumber}")
     private String fromNumber;
 
-    @Value("${TWILIO_TO_NUMBER}")
+    @Value("${twilio.toNumber}")
     private String ambulanceNumber;
 
     @Value("${APP_BASE_URL}")
