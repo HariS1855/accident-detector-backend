@@ -8,14 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class TwilioConfig {
 
-    @Value("${TWILIO_ACCOUNT_SID}")
+    @Value("${TWILIO_ACCOUNT_SID:}")
     private String accountSid;
 
-    @Value("${TWILIO_AUTH_TOKEN}")
+    @Value("${TWILIO_AUTH_TOKEN:}")
     private String authToken;
 
     @PostConstruct
     public void init() {
-        Twilio.init(accountSid, authToken);
+        if (!accountSid.isBlank() && !authToken.isBlank()) {
+            Twilio.init(accountSid, authToken);
+        } else {
+            System.out.println("⚠️ Twilio not initialized (missing env vars)");
+        }
     }
 }
