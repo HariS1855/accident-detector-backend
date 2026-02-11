@@ -17,15 +17,6 @@ public class AccidentController {
     }
 
 
-    @RestController
-    public class HealthController {
-
-        @GetMapping("/health")
-        public String health() {
-            return "Accident Detector backend running 🚑";
-        }
-    }
-
     @PostMapping("/detect")
     public String detectAccident(@RequestBody AccidentRequest request) {
 
