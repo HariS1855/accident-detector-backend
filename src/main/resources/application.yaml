@@ -1,8 +1,9 @@
+server:
+  port: ${PORT:8080}
+
 spring:
   application:
     name: accidentdetector
-  server:
-    port: ${PORT:8080}
 
 
 twilio:
