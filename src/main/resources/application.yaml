@@ -2,7 +2,8 @@ spring:
   application:
     name: accidentdetector
   server:
-    port: 8081
+    port: ${PORT:8081}
+
 
 twilio:
   accountSid: ${TWILIO_ACCOUNT_SID}
