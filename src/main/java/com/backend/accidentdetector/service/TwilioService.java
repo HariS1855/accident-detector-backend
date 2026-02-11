@@ -14,8 +14,11 @@ public class TwilioService {
     @Value("${TWILIO_FROM_NUMBER}")
     private String fromNumber;
 
-    @Value("${tTWILIO_TO_NUMBER}")
+    @Value("${TWILIO_TO_NUMBER}")
     private String ambulanceNumber;
+
+    @Value("${APP_BASE_URL}")
+    private String baseUrl;
 
     public void sendSms(String text) {
         Message.creator(
@@ -29,7 +32,7 @@ public class TwilioService {
         Call.creator(
                 new PhoneNumber(ambulanceNumber),
                 new PhoneNumber(fromNumber),
-                URI.create("http://localhost:8081/voice")
+                URI.create(baseUrl + "/voice")
         ).create();
     }
 }
