@@ -2,6 +2,7 @@ package com.backend.accidentdetector.dto;
 
 public class AccidentRequest {
 
+    // This should be "lat,lng"
     private String location;
     private String severity;
 
@@ -21,3 +22,4 @@ public class AccidentRequest {
         this.severity = severity;
     }
 }
+
