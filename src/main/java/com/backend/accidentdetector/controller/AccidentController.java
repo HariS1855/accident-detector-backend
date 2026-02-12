@@ -16,13 +16,16 @@ public class AccidentController {
         this.twilioService = twilioService;
     }
 
-
     @PostMapping("/detect")
     public String detectAccident(@RequestBody AccidentRequest request) {
 
-        String message = "🚨 ACCIDENT DETECTED 🚨\n"
-                + "Location: " + request.getLocation() + "\n"
-                + "Severity: " + request.getSeverity();
+        // Build Google Maps link from lat,lng
+        String mapLink = "https://www.google.com/maps?q=" + request.getLocation();
+
+        // SMS + call message
+        String message = "🚨 ACCIDENT ALERT 🚨\n"
+                       + "Severity: " + request.getSeverity() + "\n"
+                       + "View on Map: " + mapLink;
 
         twilioService.sendSms(message);
         twilioService.makeCall();
