@@ -11,4 +11,5 @@ twilio:
   authToken: ${TWILIO_AUTH_TOKEN}
   fromNumber: ${TWILIO_FROM_NUMBER}
   toNumber: ${TWILIO_TO_NUMBER}
+  appBaseUrl: ${APP_BASE_URL}
 
