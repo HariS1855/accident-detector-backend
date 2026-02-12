@@ -21,18 +21,27 @@ public class TwilioService {
     private String baseUrl;
 
     public void sendSms(String text) {
-        Message.creator(
+        Message message = Message.creator(
                 new PhoneNumber(ambulanceNumber),
                 new PhoneNumber(fromNumber),
                 text
         ).create();
+
+        System.out.println("SMS sent, SID: " + message.getSid());
     }
 
     public void makeCall() {
-        Call.creator(
-                new PhoneNumber(ambulanceNumber),
-                new PhoneNumber(fromNumber),
-                URI.create(baseUrl + "/voice")
-        ).create();
+        try {
+            Call call = Call.creator(
+                    new PhoneNumber(ambulanceNumber),
+                    new PhoneNumber(fromNumber),
+                    URI.create(baseUrl + "/voice")
+            ).create();
+            System.out.println("Call triggered successfully, SID: " + call.getSid());
+        } catch (Exception e) {
+            System.err.println("Failed to make call: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
+
