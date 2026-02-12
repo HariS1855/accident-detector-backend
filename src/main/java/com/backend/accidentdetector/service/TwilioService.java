@@ -17,7 +17,7 @@ public class TwilioService {
     @Value("${twilio.toNumber}")
     private String ambulanceNumber;
 
-    @Value("${APP_BASE_URL}")
+    @Value("${twilio.appBaseUrl}")
     private String baseUrl;
 
     public void sendSms(String text) {
