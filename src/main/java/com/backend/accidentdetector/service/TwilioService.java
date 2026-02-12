@@ -32,11 +32,14 @@ public class TwilioService {
 
     public void makeCall() {
         try {
+            String url = baseUrl.endsWith("/") ? baseUrl + "voice" : baseUrl + "/voice";
+
             Call call = Call.creator(
-                    new PhoneNumber(ambulanceNumber),
-                    new PhoneNumber(fromNumber),
-                    URI.create(baseUrl + "/voice")
-            ).create();
+                new PhoneNumber(ambulanceNumber),
+                new PhoneNumber(fromNumber),
+                URI.create(url)
+                ).create();
+
             System.out.println("Call triggered successfully, SID: " + call.getSid());
         } catch (Exception e) {
             System.err.println("Failed to make call: " + e.getMessage());
