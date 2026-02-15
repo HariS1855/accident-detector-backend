@@ -20,7 +20,7 @@ public class AccidentController {
     public String detectAccident(@RequestBody AccidentRequest request) {
 
         // Build Google Maps link from lat,lng
-        String mapLink = "https://www.google.com/maps?q=" + request.getLocation();
+        String mapLink = "https://www.google.com/maps?q=" + "12.926594,80.117817";
 
         // SMS + call message
         String message = "🚨 ACCIDENT ALERT 🚨\n"
